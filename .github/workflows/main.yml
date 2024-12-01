@@ -16,12 +16,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-    - name: Build Docker image
-      run: docker build -t video-router:latest .
-
   test:
     runs-on: ubuntu-latest
 
@@ -54,6 +48,4 @@ jobs:
         version: 'latest'
 
     - name: Deploy to Kubernetes
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
       run: kubectl apply -f k8s/
