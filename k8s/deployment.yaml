@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-router
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: video-router
+  template:
+    metadata:
+      labels:
+        app: video-router
+    spec:
+      containers:
+      - name: video-router
+        image: video-router:latest
+        ports:
+        - containerPort: 8080
+        
